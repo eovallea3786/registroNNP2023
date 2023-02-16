@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<br lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar estudiante</title>
+</head>
+
+<body>
+    <form method="post" name="submit-form">
+        <label for=" label_PER_ID ">PER_ID</label>
+        <input type="text " name="input_PER_ID " placeholder="Ingresa el PER_ID " value={{perid}} disabled/><br />
+
+        <label for="label_tipo_de_documento ">Tipo de Documento</label>
+        <input type="text " name="input_tipo_de_documento " placeholder="{{tipodoc}} " disabled/><br />
+
+        <label for="label_numero_de_documento ">Número de Documento</label>
+        <input type="text " name="input_numero_de_documento " placeholder="{{doc}} " disabled/><br />
+
+        <label for="label_primer_apellido ">Primer apellido</label>
+        <input type="text " name="input_primer_apellido " placeholder="{{primerapellido}} " /><br />
+
+        <label for="label_segundo_apellido ">Segundo apellido</label>
+        <input type="text " name="input_segundo_apellido " placeholder="{{segundoapellido}} " /><br />
+
+        <label for="label_primer_nombre ">Primer nombre</label>
+        <input type="text " name="input_primer_nombre " placeholder="{{primernombre}} " /><br />
+
+        <label for="label_segundo_nombre ">Segundo nombre</label>
+        <input type="text " name="input_segundo_nombre " placeholder="{{segundonombre}} " /><br />
+
+        <label for="label_fechanacimiento ">Fecha de nacimiento</label>
+        <input type="text " name="input_fechanacimiento " placeholder="{{fechanacimiento}} " /><br />
+
+        <label for="label_sexo ">Sexo</label>
+        <input type="text " name="input_sexo " placeholder="{{sexo}} " /><br />
+
+        <label for="label_localidad ">Localidad</label>
+        <input type="text " name="input_localidad " placeholder="{{localidad}} " /><br />
+
+        <label for="label_colegio ">Colegio</label>
+        <input type="text " name="input_colegio " placeholder="{{colegio}} " /><br />
+
+        <label for="label_jornada ">Jornada</label>
+        <input type="text " name="input_jornada " placeholder="{{jornada}} " /><br />
+
+        <label for="label_sede ">Sede</label>
+        <input type="text " name="input_sede " placeholder="{{sede}} " /><br />
+
+        <label for="label_curso ">Curso</label>
+        <input type="text " name="input_curso " placeholder="{{curso}} " /><br />
+
+        <label for="label_discapacidad ">Discapacidad</label>
+        <input type="text " name="input_discapacidad " placeholder="{{discapacidad}} " /><br />
+
+        <label for="label_etnia ">Etnia</label>
+        <input type="text " name="input_etnia " placeholder="{{etnia}} " /><br />
+
+        <label for="label_estado_validacion ">Estado de validación</label>
+        <input type="text " name="input_estado_validacion " placeholder="{{estado_validacion}} " disabled/><br />
+
+        <label for="label_validacion ">Validacion</label>
+        <input type="text " name="input_validacion " placeholder="{{validacion}} " disabled /><br />
+
+        <label for="label_fecha_validacion ">Fecha de validacion</label>
+        <input type="text " name="input_fecha_validacion " placeholder="{{fecha_validacion}} " disabled /><br />
+
+        <input type="submit" name="submit" value="Registrar" />
+    </form>
+</body>
+<script>
+    let scriptURL = 'https://script.google.com/macros/s/AKfycby8v5PJjDhMiTVlBbns3Ip3as3CH3h_V7GA-4UIQEsLSaknSWtIzS5cYeETK8zQiwHv/exec';
+    let form = document.forms['submit-form'];
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        let holass = fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            }).then((res) => {
+                if (res.status == 200) {
+                    form.reset();
+                    alert('Datos registrados correctamente')
+                }
+            })
+            .catch((error) => {
+                console.error('Error', error.message)
+            });
+    });
+</script>
+
+</html>
